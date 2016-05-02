@@ -37,9 +37,9 @@ function efMailChimpForms( $input, $args, $parser  ) {
 	$account_id = 	urlencode($args['account']);
 	$list_id = 		urlencode($args['list']);
 	$type = 		$args['type'];
-	$border_css =	str_replace('"', '\"', $args['bordercss']);
-	$close_link = 	$args['closelink'];
-	$prefix	=		urlencode($args['prefix']);
+	$border_css =	isset($args['bordercss']) ? str_replace('"', '\"', $args['bordercss']) : '';
+	$close_link = 	isset($args['closelink']) ? $args['closelink'] : '';
+	$prefix	=	isset($args['prefix']) ? urlencode($args['prefix']) : '';
 
 	if($close_link == 'true')
 		$insert_close_link = '<a href="#" id="mc_embed_close" class="mc_embed_close">Close</a>';
@@ -51,9 +51,9 @@ function efMailChimpForms( $input, $args, $parser  ) {
 		$border_style = "style=\"border: {$border_css}\"";
 
 	if($type == 'subscribe') {
+               $inputMailLabel = wfMessage( 'mailchimpforms-input-email');
+               $subscribetButtonText = wfMessage( 'mailchimpforms-suscribe-button');
 
-		$inputMailLabel = wfMessage( 'mailchimpforms-input-email');
-		$subscribetButtonText = wfMessage( 'mailchimpforms-suscribe-button');
 
 		$form_code = <<<FORM
 <!-- Begin MailChimp Signup Form -->
@@ -82,14 +82,14 @@ var mc_custom_error_style = '';
 	<fieldset {$border_style}>
 
 <div class="mc-field-group">
-<label for="mce-EMAIL">{$inputMailLabel}</label>
-<input type="text" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+<label for="mce-EMAIL">{$inputMailLabel} : </label>
+<input type="text" value="" name="EMAIL" placeholder="Email" class="required email" id="mce-EMAIL">
 </div>
 		<div id="mce-responses">
 			<div class="response" id="mce-error-response" style="display:none"></div>
 			<div class="response" id="mce-success-response" style="display:none"></div>
 		</div>
-		<div><input type="submit" value="{$subscribetButtonText}" name="subscribe" id="mc-embedded-subscribe" class="btn"></div>
+		<div><input type="submit" value="{$subscribetButtonText}" name="subscribe" id="mc-embedded-subscribe" class="btn" ></div>
 	</fieldset>
 	{$insert_close_link}
 </form>

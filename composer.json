@@ -1,0 +1,6 @@
+{
+    "name": "wikifab/mailchimpforms",
+    "type": "mediawiki-extension",
+    "require": {
+    }
+}
