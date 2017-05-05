@@ -99,7 +99,7 @@ FORM;
 
 		} else {
 
-			continue;
+			return '';
 
 	}
 
