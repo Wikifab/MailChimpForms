@@ -54,7 +54,6 @@ function efMailChimpForms( $input, $args, $parser  ) {
                $inputMailLabel = wfMessage( 'mailchimpforms-input-email');
                $subscribetButtonText = wfMessage( 'mailchimpforms-suscribe-button');
 
-
 		$form_code = <<<FORM
 <!-- Begin MailChimp Signup Form -->
 <!--[if IE]>
@@ -82,7 +81,6 @@ var mc_custom_error_style = '';
 	<fieldset {$border_style}>
 
 <div class="mc-field-group">
-<label for="mce-EMAIL">{$inputMailLabel} : </label>
 <input type="text" value="" name="EMAIL" placeholder="Email" class="required email" id="mce-EMAIL">
 </div>
 		<div id="mce-responses">
