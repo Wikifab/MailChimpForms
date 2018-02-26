@@ -33,6 +33,7 @@ function efMailChimpForms( $input, $args, $parser  ) {
         $to = $args['to'] ;
         $email = $args['email'] ;
 */
+	$localScripts = true;
 
 	$account_id = 	urlencode($args['account']);
 	$list_id = 		urlencode($args['list']);
@@ -54,6 +55,19 @@ function efMailChimpForms( $input, $args, $parser  ) {
                $inputMailLabel = wfMessage( 'mailchimpforms-input-email');
                $subscribetButtonText = wfMessage( 'mailchimpforms-suscribe-button');
 
+
+        $scriptCode = <<<FORM
+<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/js/jquery.validate.js"></script>
+<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/js/jquery.form.js"></script>
+<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/subscribe/xs-js?u={$account_id}&amp;id={$list_id}"></script>
+
+FORM;
+
+        if($localScripts) {
+        	$scriptCode = '';
+        }
+
 		$form_code = <<<FORM
 <!-- Begin MailChimp Signup Form -->
 <!--[if IE]>
@@ -72,10 +86,7 @@ function efMailChimpForms( $input, $args, $parser  ) {
 // or fill this in and it will be inlined when errors are generated
 var mc_custom_error_style = '';
 </script>
-<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/js/jquery-1.2.6.min.js"></script>
-<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/js/jquery.validate.js"></script>
-<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/js/jquery.form.js"></script>
-<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/subscribe/xs-js?u={$account_id}&amp;id={$list_id}"></script>
+{$scriptCode}
 <div id="mc_embed_signup">
 <form action="http://{$prefix}.us12.list-manage.com/subscribe/post?u={$account_id}&amp;id={$list_id}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
 	<fieldset {$border_style}>
