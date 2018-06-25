@@ -57,10 +57,10 @@ function efMailChimpForms( $input, $args, $parser  ) {
 
 
         $scriptCode = <<<FORM
-<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/js/jquery-1.2.6.min.js"></script>
-<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/js/jquery.validate.js"></script>
-<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/js/jquery.form.js"></script>
-<script type="text/javascript" src="http://{$prefix}.us12.list-manage.com/subscribe/xs-js?u={$account_id}&amp;id={$list_id}"></script>
+<script type="text/javascript" src="https://{$prefix}.us12.list-manage.com/js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="https://{$prefix}.us12.list-manage.com/js/jquery.validate.js"></script>
+<script type="text/javascript" src="https://{$prefix}.us12.list-manage.com/js/jquery.form.js"></script>
+<script type="text/javascript" src="https://{$prefix}.us12.list-manage.com/subscribe/xs-js?u={$account_id}&amp;id={$list_id}"></script>
 
 FORM;
 
@@ -88,7 +88,7 @@ var mc_custom_error_style = '';
 </script>
 {$scriptCode}
 <div id="mc_embed_signup">
-<form action="http://{$prefix}.us12.list-manage.com/subscribe/post?u={$account_id}&amp;id={$list_id}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+<form action="https://{$prefix}.us12.list-manage.com/subscribe/post?u={$account_id}&amp;id={$list_id}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
 	<fieldset {$border_style}>
 
 <div class="mc-field-group">
